@@ -1,5 +1,6 @@
 using Api.Data;
 using Api.Models;
+using Api.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +20,9 @@ builder.Services.AddDbContext<DataContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+
+builder.Services.AddScoped<JwtService>();
+
 builder.Services.AddIdentityCore<Users>(opt =>
 {
     opt.Password.RequiredLength = 6;
@@ -33,6 +37,12 @@ builder.Services.AddIdentityCore<Users>(opt =>
 .AddSignInManager<SignInManager<Users>>()
 .AddUserManager<UserManager<Users>>() 
 .AddDefaultTokenProviders();
+
+builder.Services.AddAuthentication(opt =>
+{
+
+})
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
