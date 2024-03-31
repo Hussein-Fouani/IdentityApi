@@ -9,6 +9,6 @@ namespace Api.Data
         public DataContext(DbContextOptions<DataContext> options):base(options)
         {
         }
-        public DbSet<Users> Users { get; set; }
+        public  DbSet<Users> User { get; set; }
     }
 }
