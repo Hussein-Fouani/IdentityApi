@@ -28,7 +28,7 @@ namespace Api.Services
                 new Claim(ClaimTypes.GivenName,user.FirstName),
                 new Claim(ClaimTypes.Surname,user.LastName)
             };
-             var credientials = new SigningCredentials(_jwtkey,SecurityAlgorithms.HmacSha512Signature);
+             var credientials = new SigningCredentials(_jwtkey,SecurityAlgorithms.HmacSha256Signature);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(Userclaims),
